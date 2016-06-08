@@ -1,0 +1,27 @@
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\Template AutoCAD PlugIn.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\Template AutoCAD PlugIn.pdb
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AcCoreMgd.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AcDbMgd.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AcDx.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AcMgd.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AcWindows.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AdWindows.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\PresentationCore.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AcTcMgd.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\bin\Debug\AcCui.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\obj\Debug\Template AutoCAD PlugIn.csprojResolveAssemblyReference.cache
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\obj\Debug\Template_AutoCAD_PlugIn.MyCommands.resources
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\obj\Debug\Template AutoCAD PlugIn.csproj.GenerateResource.Cache
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\obj\Debug\Template AutoCAD PlugIn.dll
+C:\Users\jmasigan\Documents\Portable\Template AutoCAD PlugIn\Template AutoCAD PlugIn\obj\Debug\Template AutoCAD PlugIn.pdb
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\bin\Debug\AutoCAD.ProfileViewer.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\bin\Debug\AutoCAD.ProfileViewer.pdb
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\bin\Debug\PresentationCore.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\bin\Debug\AcTcMgd.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\bin\Debug\AcCui.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\obj\Debug\Template AutoCAD PlugIn.csprojResolveAssemblyReference.cache
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\obj\Debug\ProfileViewer.MyCommands.resources
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\obj\Debug\ProfileViewer.ProfileViewer_Form.resources
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\obj\Debug\Template AutoCAD PlugIn.csproj.GenerateResource.Cache
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\obj\Debug\AutoCAD.ProfileViewer.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\Template AutoCAD PlugIn\obj\Debug\AutoCAD.ProfileViewer.pdb

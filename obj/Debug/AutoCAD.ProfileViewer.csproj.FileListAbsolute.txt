@@ -1,0 +1,11 @@
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\bin\Debug\AutoCAD.ProfileViewer.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\bin\Debug\AutoCAD.ProfileViewer.pdb
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\bin\Debug\PresentationCore.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\bin\Debug\AcTcMgd.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\bin\Debug\AcCui.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\obj\Debug\AutoCAD.ProfileViewer.csprojResolveAssemblyReference.cache
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\obj\Debug\ProfileViewer.MyCommands.resources
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\obj\Debug\ProfileViewer.ProfileViewer_Form.resources
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\obj\Debug\AutoCAD.ProfileViewer.csproj.GenerateResource.Cache
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\obj\Debug\AutoCAD.ProfileViewer.dll
+C:\Users\Jericho Masigan\Documents\Programming\AutoCAD.ProfileViewer\AutoCAD.ProfileViewer\obj\Debug\AutoCAD.ProfileViewer.pdb
