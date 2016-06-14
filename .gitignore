@@ -45,3 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+bin/Debug/AcDbMgd.dll
+bin/Debug/AcTcMgd.dll
+bin/Debug/AcCoreMgd.dll
+bin/Debug/AcMgd.dll
+bin/Debug/AdWindows.dll
+bin/Debug/AcCui.dll
+bin/Debug/AutoCAD.ProfileViewer.pdb
+bin/Debug/AcWindows.dll
+bin/Debug/AcDx.dll
+bin/Debug/PresentationCore.dll

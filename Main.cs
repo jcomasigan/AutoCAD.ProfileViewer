@@ -82,16 +82,25 @@ namespace ProfileViewer
                     BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForRead);
                     Entity ent = tr.GetObject(profileLine, OpenMode.ForRead) as Entity;
                     Entity ent2 = tr.GetObject(id, OpenMode.ForRead) as Entity;
+                    Polyline entPoly = tr.GetObject(profileLine, OpenMode.ForRead) as Polyline;
+                    Point3d point = entPoly.GetPointAtDist(2);
+                    
+                    Vector3d vec = entPoly.GetFirstDerivative(point);
+                    vec = vec.TransformBy(Matrix3d.Rotation(Math.PI / 2.0, entPoly.Normal, Point3d.Origin));
+                    Plane plane = ent2.GetPlane();
+                    Curve curv = tr.GetObject(id, OpenMode.ForRead) as Curve;
+                    Curve projCurv = curv.GetProjectedCurve(plane, plane.Normal);
 
                     /// SET ELEVATION TO ZERO TEMPORARY THEN PUT IT BACk
                     Point3dCollection intersectionPoints = new Point3dCollection();
-                    IntPtr intptr1 = new IntPtr();
-                    IntPtr intptr2 = new IntPtr();
-                    ent.IntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, intptr1, intptr2);
-                    foreach(Point3d pt in intersectionPoints )
+                    //ent.IntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
+                    ent.BoundingBoxIntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
+                    foreach (Point3d pt in intersectionPoints )
                     {
                         ed.WriteMessage(string.Format("\n Intersection Pts : {0}, {1}, {2}", pt.X.ToString(), pt.Y.ToString(), pt.Z.ToString()));
                         Circle circ = new Circle(pt, Vector3d.ZAxis, 10 * db.Dimtxt);
+                        Polyline pl = new Polyline();
+                       
                         circ.ColorIndex = 1;
                         using (DocumentLock doclock = doc.LockDocument())
                         {
@@ -101,7 +110,7 @@ namespace ProfileViewer
                             tr.AddNewlyCreatedDBObject(circ, true);
                         }
                     }
-                    ent.BoundingBoxIntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, intptr1, intptr2);
+                    ent.BoundingBoxIntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
                     foreach (Point3d pt in intersectionPoints)
                     {
                         ed.WriteMessage(string.Format("\n Bounding box Intersection Pts : {0}, {1}, {2}", pt.X.ToString(), pt.Y.ToString(), pt.Z.ToString()));
