@@ -76,46 +76,63 @@ namespace ProfileViewer
                 List<ObjectId> contoursId = new List<ObjectId>();
                 ObjectIdCollection majorEnts = SelectByLayer(majorContLayer);
                 ObjectIdCollection minorEnts = SelectByLayer(minorContLayer);
-                foreach(ObjectId id in majorEnts)
+                List<Tuple<double, double>> intersectDist = new List<Tuple<double, double>>();
+                foreach (ObjectId id in majorEnts)
                 {
-                    
-                    BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForRead);
-                    Entity ent = tr.GetObject(profileLine, OpenMode.ForRead) as Entity;
-                    Entity ent2 = tr.GetObject(id, OpenMode.ForRead) as Entity;
-                    Polyline entPoly = tr.GetObject(profileLine, OpenMode.ForRead) as Polyline;
-                    Point3d point = entPoly.GetPointAtDist(2);
-                    
-                    Vector3d vec = entPoly.GetFirstDerivative(point);
-                    vec = vec.TransformBy(Matrix3d.Rotation(Math.PI / 2.0, entPoly.Normal, Point3d.Origin));
-                    Plane plane = ent2.GetPlane();
-                    Curve curv = tr.GetObject(id, OpenMode.ForRead) as Curve;
-                    Curve projCurv = curv.GetProjectedCurve(plane, plane.Normal);
+                    using (DocumentLock doclock = doc.LockDocument())
+                    {
 
-                    /// SET ELEVATION TO ZERO TEMPORARY THEN PUT IT BACk
-                    Point3dCollection intersectionPoints = new Point3dCollection();
-                    //ent.IntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
-                    ent.BoundingBoxIntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
-                    foreach (Point3d pt in intersectionPoints )
-                    {
-                        ed.WriteMessage(string.Format("\n Intersection Pts : {0}, {1}, {2}", pt.X.ToString(), pt.Y.ToString(), pt.Z.ToString()));
-                        Circle circ = new Circle(pt, Vector3d.ZAxis, 10 * db.Dimtxt);
-                        Polyline pl = new Polyline();
-                       
-                        circ.ColorIndex = 1;
-                        using (DocumentLock doclock = doc.LockDocument())
+                        BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForRead);
+                        Polyline ent = tr.GetObject(profileLine, OpenMode.ForRead) as Polyline;
+                        Polyline ent2 = tr.GetObject(id, OpenMode.ForWrite) as Polyline;
+                        double elav = ent2.Elevation; //store elevation temporary
+                        ent2.Elevation = 0;
+
+                        /// SET ELEVATION TO ZERO TEMPORARY THEN PUT IT BACk
+                        Point3dCollection intersectionPoints = new Point3dCollection();
+                        //ent.IntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
+                        ent.IntersectWith(ent2, Intersect.OnBothOperands, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
+                       // Point3d[] points = new Point3d[intersectionPoints.Count];
+                       // intersectionPoints.CopyTo(points, 0);
+                        foreach (Point3d pt in intersectionPoints)
                         {
-                            btr.UpgradeOpen();
-                            btr.AppendEntity(circ);
-                            btr.DowngradeOpen();
-                            tr.AddNewlyCreatedDBObject(circ, true);
+                            double distance = ent.GetDistAtPoint(pt);
+                            Tuple<double, double> xsectPt = new Tuple<double, double>(distance, elav);
+                            intersectDist.Add(xsectPt);
+                            //ed.WriteMessage(string.Format("\n INTERSECTION DIST AT : {0}", distance.ToString()));
+                           //  FOR TESTING
+                            Circle circ = new Circle(pt, Vector3d.ZAxis, 3 * db.Dimtxt);
+                            Polyline pl = new Polyline();
+
+                            circ.ColorIndex = 1;
+                                btr.UpgradeOpen();
+                                btr.AppendEntity(circ);
+                                btr.DowngradeOpen();
+                                tr.AddNewlyCreatedDBObject(circ, true);         
+                                                 
                         }
-                    }
-                    ent.BoundingBoxIntersectWith(ent2, Intersect.ExtendBoth, intersectionPoints, IntPtr.Zero, IntPtr.Zero);
-                    foreach (Point3d pt in intersectionPoints)
-                    {
-                        ed.WriteMessage(string.Format("\n Bounding box Intersection Pts : {0}, {1}, {2}", pt.X.ToString(), pt.Y.ToString(), pt.Z.ToString()));
+
+                        ent2.Elevation = elav; //set it back
                     }
                 }
+                intersectDist.Sort();
+                Polyline profile = new Polyline();
+                for (int i = 0; i < intersectDist.Count; i++)
+                {
+                    
+
+                    profile.AddVertexAt(i, new Point2d(intersectDist[i].Item1, intersectDist[i].Item2), 0, 0, 0);
+                    if(i == intersectDist.Count - 1)
+                    {
+                        using (DocumentLock docLock = doc.LockDocument())
+                        {
+                            BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                            btr.AppendEntity(profile);
+                            tr.AddNewlyCreatedDBObject(profile, true);
+                        }
+                    }
+                }
+                
                 tr.Commit();
             }
          }
@@ -128,7 +145,7 @@ namespace ProfileViewer
             }
             return list;
         }
-
+        
         public static ObjectIdCollection SelectByLayer(string layerName)
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
