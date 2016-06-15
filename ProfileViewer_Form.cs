@@ -22,6 +22,7 @@ namespace ProfileViewer
 
         private void selectPline_btn_Click(object sender, EventArgs e)
         {
+            this.Hide();
             string objType = "";
             ObjectId profileLineId = Main.SelectPolyline(out objType);
             if (profileLineId != ObjectId.Null)
@@ -29,6 +30,7 @@ namespace ProfileViewer
                 selectPline_btn.Text = objType + " SELECTED";
                 GlobalVars.profileLineId = profileLineId;
             }
+            this.Show();
         }
 
         private void majorOnly_chbx_CheckedChanged(object sender, EventArgs e)
@@ -45,7 +47,14 @@ namespace ProfileViewer
 
         private void plot_btn_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Main.GetProfile(GlobalVars.profileLineId, majorCont_cmbx.SelectedItem.ToString(), minorCont_cmbx.SelectedItem.ToString());
+            this.Show();
+        }
+
+        private void insertionButton_Click(object sender, EventArgs e)
+        {
+            insertionButton.Text = Main.GetInsertionPoint();
         }
     }
 }

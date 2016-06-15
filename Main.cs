@@ -121,7 +121,7 @@ namespace ProfileViewer
                 {
                     
 
-                    profile.AddVertexAt(i, new Point2d(intersectDist[i].Item1, intersectDist[i].Item2), 0, 0, 0);
+                    profile.AddVertexAt(i, new Point2d(intersectDist[i].Item1 + GlobalVars.insertionPt.X, intersectDist[i].Item2 + GlobalVars.insertionPt.Y), 0, 0, 0);
                     if(i == intersectDist.Count - 1)
                     {
                         using (DocumentLock docLock = doc.LockDocument())
@@ -179,10 +179,26 @@ namespace ProfileViewer
 
             return selectedObjects;
         }
+
+        public static string GetInsertionPoint()
+        {
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            PromptPointOptions prmptPtOptions = new PromptPointOptions("\n\nPick insertion point....");
+            PromptPointResult result = ed.GetPoint(prmptPtOptions);
+            GlobalVars.insertionPt = result.Value;
+            Decimal x = Convert.ToDecimal(result.Value.X);
+            Decimal y = Convert.ToDecimal(result.Value.Y);
+            string res = string.Format("{0}, {1}", x.ToString("#.##"), y.ToString("#.##"));
+            return res;
+        }
     }
+
+
     
     class GlobalVars
     {
         public static ObjectId profileLineId = ObjectId.Null;
+        public static Point3d insertionPt = new Point3d();
     }
 }
