@@ -1,4 +1,5 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.Geometry;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,18 +39,36 @@ namespace ProfileViewer
             if(majorOnly_chbx.CheckState == CheckState.Checked)
             {
                 minorCont_cmbx.Enabled = false;
+                GlobalVars.majorOnly = true;
             }
             else
             {
                 minorCont_cmbx.Enabled = true;
+                GlobalVars.majorOnly = false;
             }
         }
 
         private void plot_btn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Main.GetProfile(GlobalVars.profileLineId, majorCont_cmbx.SelectedItem.ToString(), minorCont_cmbx.SelectedItem.ToString());
-            this.Show();
+            if (GlobalVars.profileLineId != ObjectId.Null)
+            {
+                plot_btn.Enabled = false;
+                try
+                {
+                    Main.GetProfile(GlobalVars.profileLineId, majorCont_cmbx.SelectedItem.ToString(), minorCont_cmbx.SelectedItem.ToString());
+                    MessageBox.Show("Successfully created profile. Inserted at: " + insertionButton.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("ERROR: " + ex.Message);
+                }
+
+                plot_btn.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Please select profile line and/or insertion point");
+            }
         }
 
         private void insertionButton_Click(object sender, EventArgs e)

@@ -39,10 +39,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.plot_btn = new System.Windows.Forms.Button();
             this.Profile = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.insertionButton = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Profile.SuspendLayout();
@@ -139,7 +137,7 @@
             // 
             // plot_btn
             // 
-            this.plot_btn.Location = new System.Drawing.Point(53, 466);
+            this.plot_btn.Location = new System.Drawing.Point(59, 287);
             this.plot_btn.Name = "plot_btn";
             this.plot_btn.Size = new System.Drawing.Size(263, 23);
             this.plot_btn.TabIndex = 4;
@@ -149,16 +147,24 @@
             // 
             // Profile
             // 
-            this.Profile.Controls.Add(this.textBox1);
             this.Profile.Controls.Add(this.insertionButton);
-            this.Profile.Controls.Add(this.label5);
             this.Profile.Controls.Add(this.label4);
             this.Profile.Location = new System.Drawing.Point(13, 210);
             this.Profile.Name = "Profile";
-            this.Profile.Size = new System.Drawing.Size(351, 113);
+            this.Profile.Size = new System.Drawing.Size(351, 60);
             this.Profile.TabIndex = 5;
             this.Profile.TabStop = false;
-            this.Profile.Text = "groupBox3";
+            this.Profile.Text = "Profile";
+            // 
+            // insertionButton
+            // 
+            this.insertionButton.Location = new System.Drawing.Point(115, 20);
+            this.insertionButton.Name = "insertionButton";
+            this.insertionButton.Size = new System.Drawing.Size(220, 23);
+            this.insertionButton.TabIndex = 1;
+            this.insertionButton.Text = "0,0,0";
+            this.insertionButton.UseVisualStyleBackColor = true;
+            this.insertionButton.Click += new System.EventHandler(this.insertionButton_Click);
             // 
             // label4
             // 
@@ -169,37 +175,11 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Insertion Point:";
             // 
-            // insertionButton
-            // 
-            this.insertionButton.Location = new System.Drawing.Point(115, 20);
-            this.insertionButton.Name = "insertionButton";
-            this.insertionButton.Size = new System.Drawing.Size(220, 23);
-            this.insertionButton.TabIndex = 1;
-            this.insertionButton.Text = ".....";
-            this.insertionButton.UseVisualStyleBackColor = true;
-            this.insertionButton.Click += new System.EventHandler(this.insertionButton_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Label scale:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(115, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 2;
-            // 
             // ProfileViewer_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 501);
+            this.ClientSize = new System.Drawing.Size(375, 321);
             this.Controls.Add(this.Profile);
             this.Controls.Add(this.plot_btn);
             this.Controls.Add(this.groupBox2);
@@ -229,9 +209,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button plot_btn;
         private System.Windows.Forms.GroupBox Profile;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button insertionButton;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
     }
 }

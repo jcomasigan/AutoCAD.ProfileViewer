@@ -55,3 +55,12 @@ bin/Debug/AutoCAD.ProfileViewer.pdb
 bin/Debug/AcWindows.dll
 bin/Debug/AcDx.dll
 bin/Debug/PresentationCore.dll
+bin/Release/AcCoreMgd.dll
+bin/Release/AcCui.dll
+bin/Release/AcTcMgd.dll
+bin/Release/AdWindows.dll
+bin/Release/AcMgd.dll
+bin/Release/AcWindows.dll
+bin/Release/AcDbMgd.dll
+bin/Release/acad.err
+bin/Release/AcDx.dll
